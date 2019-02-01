@@ -10,8 +10,6 @@ neo = Gpio()  # create new Neo object
 
 pinTwo = 24  # pin to use
 pinThree = 3
-pinFour = 25
-PinSix = 3
 
 
 neo.pinMode(pinTwo, neo.OUTPUT)  # Use innerbank pin 2 and set it as output either 0 (neo.INPUT) or 1 (neo.OUTPUT)
@@ -22,10 +20,6 @@ for a in range(0, 10):  # Do for five times
     neo.digitalWrite(pinTwo, neo.HIGH)  # write high value to pin
     sleep(0.5)  # wait one second
     neo.digitalWrite(pinTwo, neo.LOW)  # write low value to pin
-    sleep(0.5)  # wait one second
-    neo.digitalWrite(pinFour, neo.HIGH)  # write high value to pin
-    sleep(0.5)  # wait one second
-    neo.digitalWrite(pinFour, neo.LOW)  # write low value to pin
     sleep(0.5)  # wait one second
 
 # Read pin
