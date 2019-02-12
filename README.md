@@ -1,96 +1,78 @@
-# Neo.GPIO
-#### A python library to control the Gpios, Accel, Gyro, Temp, Baro, Magno sensors/pins easily
+# Introduction
 
-## Help needed with new NEOC bindings
------------------
-I was working on the C version of this library so that it could be used in any language with easy simulated fakePWM support. However that library still requires a lot of work and Python bindings. I know the fakePWM support has been in the soon to come for a while, but I've been quite busy with life for the past few years. I am more than happy to review any pull requests on this project or NEOC (link: https://github.com/smerkousdavid/NEOC.GPIO) 
+Build an asynchronous Bluetooth echo server using that prints messages
+received and send them back through Bluetooth channel.
 
-### Install
------------------
-To install this package just download the zip and extract the library anwhere your python file will be
-EXAMPLE: place the neo folder on your desktop and then create a new python file on the desktop for your program
+# Required Python Modules
 
-### Use
------------------
-#### INFO: you must run python file as root not udooer or errors might occur like sensor not plugged int<br>
-Example on how to to run the files (You can replace the SnapinSensorsExample.py with whatever file you want to run):
+The required modules are
 
-        echo udooer | sudo -S su -c 'python SnapinSensorsExample.py'
+1. python3-pip
 
-or<br>
+To install `python3-pip`, run the following command:
+```
+$ sudo apt-get install python3-pip
+```
 
-        echo udooer | sudo -S su -c 'python GpioExample.py'
+2.  PyBluez
 
+They can be installed with the following command:
+```
+$ sudo python3 -m pip install -r requirements.txt
+```
+If you encounter errors during the installation, please refer to FAQ
+section.
 
-To get started on the Neo use the examples that are provided in the zipped folder. For the Gpio use<br> 
-Every pcb port number, which are labeled on the on the board itself<br>
+# Bluetooth Setup
+First, you need to put your Bluetooth adapter in discoverable mode with
+```
+$ sudo hciconfig hci0 piscan
+```
+The default device name is `udoo-0`. To customize your Bluetooth device
+name, please refer to FAQ section.
 
-If you don't want to look through the example files here is how to use them<br>
+You can then use `bluez-simple-agent` to pair your Android device with
+your UDOO board. Run the following script:
+```
+$ sudo bluez-simple-agent
+```
+You only need to pair UDOO board with your Android phone once. Once they
+are paired, you can skip this step in the future. After you pair your
+Android device with your UDOO board, you need to add the serial port
+profile
+```
+$ sudo sdptool add sp
+```
 
-Create a new file outside of the neo folder called gpio.py<br><br>
-Import the libraries<br>
+# Usage
+Run the following command on an UDOO Neo to start RFCOMM server:
+```
+$ python3 gossip_bt_server.py
+```
 
-    from neo import Gpio
-    from time import sleep
+# FAQ
+* Why `pip` cannot verify server's certificates?
 
-Associate with variables and create pins<br>
+   This might happen if your system time is not properly synced. You may
+   first check your system time with `date` command. If so, then use
+   ```
+   $ sudo service ntp stop
+   $ sudo ntpdate -u time.nist.gov
+   $ sudo service ntp start
+   ```
+   To sync your system time with an NTP server. If unfortunately, this
+   still does not work, you will need to set your system time manually
+   with
+   ```
+   $ sudo date MMDDhhmmyyyy[.ss]
+   ```
 
-    gpio = Gpio()
-    writepin = 3
-    readpin = 2
+* How to customize Bluetooth broadcast name?
 
-Set each pin to certain direction (Input/Output)<br>
-
-    gpio.pinMode(writepin, neo.OUTPUT)
-    gpio.pinMode(readpin, neo.INPUT)
-
-
-Lets blink forever and read our second pin (Remember read pin must be pulled fully to either LOW or HIGH not hanging)<br>
-
-    while True:
-      gpio.digitalWrite(writepin, neo.HIGH)
-      sleep(1)
-      gpio.digitalWrite(writepin, neo.LOW)
-      sleep(1)
-      print "Pin 2 current state is: "+str(gpio.digitalRead(readpin))
-
-Here is a way so that most people who use object oriented way
-
-        from neo import Gpio
-        from time import sleep
-        
-        pin = easyGpio(2) # Pin 2 with LED
-        readpin = easyGpio(3) # Pin 3 with switch
-        
-        pin.pinOUT() # Make pin output 
-        readpin.pinIN() # Make pin in
-        
-        while True:
-        	pin.on() # Turn pin on
-        	sleep(1) # wait one second
-        	pin.off() # Turn pin off
-        	print "pin 3 state %d" % readpin.get() # Get current pin state
-        	sleep(1)
-
-Yaay if everything worked correctly and you wired the LED and input button correctly then you should be able to read and write values<br>
-Remember GPIO is not the only thing you can do with this library you can use all the sensors that are provided currently for the Neo<br>Such as<br>
-
-    Accel()
-    Gyro()
-    Magno()
-    Temp()
-    Barometer()
-
-Check them out in the SnapinSensorsExample.py and InBoardSensorsExample.py<br>
-
-#### Soon to come PWM (analogWrite/Read) and faster IO and i2c speeds using direct ports and maybe MM files
-I just need to know if people are interested in that, message me if so<br>
-
-### Other
------------------
-Don't worry about this library there is a lot of error checking that goes through before sending pin values<br>
-The only thing that this won't handle is detecting is the cortex pins are on output, so if you set the cortex pin on output<br>
-If you don't know what I mean, just to be safe flash the cortex with the minimal sketch so you don't damage the board<br>
-
-Any questions? Contact me at smerkousdavid@gmail.com
-
+   The default broadcast name of UDOO Neo board is `udoo-0`, if you want
+   to customize its name, create a `machine-info` file in `/etc` folder,
+   and add `PRETTY_HOSTNAME=device-name`. After that, restart your
+   Bluetooth service with
+   ```
+   $ sudo service bluetooth restart
+   ```
