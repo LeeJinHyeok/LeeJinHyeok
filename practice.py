@@ -5,4 +5,6 @@ def maximum(x,y):
         return 'The numbers are equal'
     else:
         return y
-print(maximum(input('x를 입력하시오:'),input('y를 입력하시오:')))
+a = int(input('x를 입력하시오: '))
+b = int(input('y를 입력하시오: '))
+print(maximum(a,b))
