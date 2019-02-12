@@ -66,4 +66,4 @@ while True:
     v = 5 * 0.000244140625 * raw
     t = (1000 * v) -510
     sleep(1)
-    print t
+    print (t)
