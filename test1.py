@@ -1,21 +1,21 @@
 # A easy Gpio library example for the Udoo Neo created by David Smerkous
 # The current things this library can
 from neo import Gpio  # import Gpio library
-from time import sleep  # import sleep to wait for blinks
+from time import sleep
 
 neo =Gpio()
 
-pinTwo = 2 # pin to use
-pinFour = 3
-pinFive = 4
-pinSix = 5
+S0 = 2 # pin to use
+S1 = 3
+S2 = 4
+S3 = 5
 
 
-pinNum = [pinTwo,pinFour,pinFive,pinSix]
+pinNum = [S0,S1,S2,S3]
 # Blink example
 for i in range(0,4):
+    neo.digitalWrite(pinNum[i], 0)
     neo.pinMode(pinNum[i], neo.OUTPUT)
-    print(i)
 
 while 1:
     for x in range(0,16):
@@ -25,5 +25,9 @@ while 1:
             num[y] = t % 2
             t = t // 2
 
-            neo.digitalWrite(pinNum[y], num[y])
+        neo.digitalWrite(pinNum[y], num[y])
+        neo.digitalWrite(pinNum[y], num[y])
+        neo.digitalWrite(pinNum[y], num[y])
+        neo.digitalWrite(pinNum[y], num[y])
         sleep(1)
+
