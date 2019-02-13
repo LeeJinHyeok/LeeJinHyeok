@@ -25,6 +25,9 @@ while True:
             num[y] = t % 2
             t = t // 2
 
-            neo.digitalWrite(pinNum[y], num[y])
+            neo.digitalWrite(pinNum[3],num[y])
+            neo.digitalWrite(pinNum[2], num[y])
+            neo.digitalWrite(pinNum[1], num[y])
+            neo.digitalWrite(pinNum[0], num[y])
         sleep(1)
 
