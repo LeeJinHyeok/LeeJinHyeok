@@ -27,12 +27,12 @@ while 1 :
     for x in range(16):
         num = [0,0,0,0]
         t = x
-            for y in range(4):
-                num[y] = t%2
-                t = t/2
+        for y in range(4):
+            num[y] = t%2
+            t = t/2
 
-            neo.digitalWrite(pinNum[pinSix], num[pinSix])
-            neo.digitalWrite(pinNum[pinFive], num[pinFive])
-            neo.digitalWrite(pinNum[pinFour], num[pinFour])
-            neo.digitalWrite(pinNum[pinTwo], num[pinTwo])
-            sleep(1)
+        neo.digitalWrite(pinNum[pinSix], num[pinSix])
+        neo.digitalWrite(pinNum[pinFive], num[pinFive])
+        neo.digitalWrite(pinNum[pinFour], num[pinFour])
+        neo.digitalWrite(pinNum[pinTwo], num[pinTwo])
+        sleep(1)
