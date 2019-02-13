@@ -5,3 +5,4 @@ while True:
     t =(v-500)/10
     sleep(1)
     print (t)
+    print(raw)
