@@ -11,26 +11,37 @@ neo = Gpio()  # create new Neo object
 pinTwo = 24  # pin to use
 pinThree = 3
 pinFour = 25
-pinFive = 3
+pinFive = 26
+pinSix = 27
 
 
 neo.pinMode(pinTwo, neo.OUTPUT)  # Use innerbank pin 2 and set it as output either 0 (neo.INPUT) or 1 (neo.OUTPUT)
 neo.pinMode(pinThree, neo.INPUT)  # Use pin three(innerbank) and read set state to read
 neo.pinMode(pinFour, neo.OUTPUT)  # Use innerbank pin 2 and set it as output either 0 (neo.INPUT) or 1 (neo.OUTPUT)
-neo.pinMode(pinFive, neo.INPUT)  # Use pin three(innerbank) and read set state to read
+# Use pin three(innerbank) and read set state to read
+neo.pinMode(pinFive, neo.OUTPUT)
+neo.pinMode(pinSix, neo.OUTPUT)
 
 # Blink example
 for a in range(0, 10):  # Do for five times
-    if(a%2 == 0):
-        neo.digitalWrite(pinTwo, neo.HIGH)  # write high value to pin
-        sleep(0.5)  # wait one second
-        neo.digitalWrite(pinTwo, neo.LOW)  # write low value to pin
-        sleep(0.5)  # wait one second
-    else:
-        neo.digitalWrite(pinFour, neo.HIGH)  # write high value to pin
-        sleep(0.5)  # wait one second
-        neo.digitalWrite(pinFour, neo.LOW)  # write low value to pin
-        sleep(0.5)  # wait one second
+    neo.digitalWrite(pinFour, pinSix, neo.HIGH)  # write high value to pin
+    sleep(0.1)  # wait one second
+
+    neo.digitalWrite(pinFour, pinSix, neo.LOW)  # write low value to pin
+    sleep(0.1)  # wait one second
+
+    neo.digitalWrite(pinTwo, pinSix, neo.HIGH)  # write high value to pin
+    sleep(0.1)  # wait one second
+
+    neo.digitalWrite(pinTwo, pinSix, neo.LOW)  # write low value to pin
+    sleep(0.1)  # wait one secondneo.digitalWrite(pinTwo, pinSix, neo.HIGH)  # write high value to pin
+    sleep(0.1)  # wait one second
+
+    neo.digitalWrite(pinTwo, pinFour, pinFive, pinSix, neo.HIGH)  # write low value to pin
+    sleep(0.1)  # wait one second
+
+    neo.digitalWrite(pinTwo, pinFour, pinFive, pinSix, neo.LOW)  # write high value to pin
+    sleep(0.1)  # wait one second
 
 # Read pin
 print
