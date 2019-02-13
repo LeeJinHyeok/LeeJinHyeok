@@ -8,10 +8,10 @@ from time import sleep  # import sleep to wait for blinks
 
 neo = Gpio()  # create new Neo object
 
-pinTwo = 24  # pin to use
-pinFour = 25
-pinFive = 26
-pinSix = 27
+pinTwo = 0  # pin to use
+pinFour = 1
+pinFive = 2
+pinSix = 3
 
 
 
