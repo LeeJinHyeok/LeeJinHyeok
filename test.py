@@ -19,11 +19,20 @@ neo.pinMode(pinTwo, neo.OUTPUT)  # Use innerbank pin 2 and set it as output eith
 neo.pinMode(pinFour, neo.OUTPUT)  # Use innerbank pin 2 and set it as output either 0 (neo.INPUT) or 1 (neo.OUTPUT)
 neo.pinMode(pinFive, neo.OUTPUT)  # Use innerbank pin 2 and set it as output either 0 (neo.INPUT) or 1 (neo.OUTPUT)
 neo.pinMode(pinSix, neo.OUTPUT)  # Use innerbank pin 2 and set it as output either 0 (neo.INPUT) or 1 (neo.OUTPUT)
-
+pinNum = [pinTwo,pinFour,pinFive,pinSix]
 # Blink example
-for a in range(0, 16):  # Do for five times
-    if(a == 5):
-        neo.digitalWrite(pinFour,pinFive, neo.HIGH)  # write high value to pin
-        sleep(1)  # wait one second
-        neo.digitalWrite(pinFour,pinFive, neo.LOW)  # write low value to pin
-        sleep(1)  # wait one second
+for i in pinNum:
+    neo.pinMode(pinNum[i], neo.OUTPUT)
+while 1 :
+    for x in range(16):
+        num = [0,0,0,0]
+        t = x
+            for y in range(4):
+                num[y] = t%2
+                t = t/2
+
+            neo.digitalWrite(pinNum[pinSix], num[pinSix])
+            neo.digitalWrite(pinNum[pinFive], num[pinFive])
+            neo.digitalWrite(pinNum[pinFour], num[pinFour])
+            neo.digitalWrite(pinNum[pinTwo], num[pinTwo])
+            sleep(1)
