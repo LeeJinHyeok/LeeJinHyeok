@@ -27,6 +27,7 @@ while True:
             t = t // 2
 
         neo.digitalWrite(pinNum, num)
+        sleep(1)
         neo.digitalWrite(pinNum,num2)
         sleep(1)
 
