@@ -21,7 +21,7 @@ neo.pinMode(pinFour, neo.OUTPUT)  # Use innerbank pin 2 and set it as output eit
 
 # Blink example
 for a in range(0, 10):  # Do for five times
-    if(a%2 == 0):
+    if(a == 0):
         neo.digitalWrite(pinTwo, neo.HIGH)  # write high value to pin
         sleep(0.5)  # wait one second
         neo.digitalWrite(pinTwo, neo.LOW)  # write low value to pin
