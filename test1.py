@@ -5,12 +5,10 @@ from time import sleep  # import sleep to wait for blinks
 
 neo =Gpio()
 
-pinTwo = 0  # pin to use
-pinFour = 1
-pinFive = 2
-pinSix = 3
-
-
+pinTwo = 2 # pin to use
+pinFour = 3
+pinFive = 4
+pinSix = 5
 
 
 pinNum = [pinTwo,pinFour,pinFive,pinSix]
