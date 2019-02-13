@@ -44,7 +44,7 @@ for a in range(0, 16):  # Do for five times
         sleep(1)
         neo.digitalWrite(pinSix, neo.LOW)  # write low value to pin
         sleep(1)  # wait one second
-    elif(a==15)
+    elif(a==15):
         neo.digitalWrite(pinTwo, neo.HIGH)  # write high value to pin
         sleep(1)  # wait one second
         neo.digitalWrite(pinFive, neo.HIGH)  # write high value to pin
