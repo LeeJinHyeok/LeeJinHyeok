@@ -14,7 +14,7 @@ S3 = 5
 pinNum = [S0,S1,S2,S3]
 # Blink example
 for i in range(0, 4):
-    neo.digitalWrite(pinNum[i], 0)
+    # neo.digitalWrite(pinNum[i], 0)
     neo.pinMode(pinNum[i], neo.OUTPUT)
 
 num = [0, 0, 0, 0]
