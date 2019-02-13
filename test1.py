@@ -24,24 +24,36 @@ neo.pinMode(pinSix, neo.OUTPUT)
 
 # Blink example
 for a in range(0, 10):  # Do for five times
-    neo.digitalWrite(pinFour, pinSix, neo.HIGH)  # write high value to pin
-    sleep(0.1)  # wait one second
+    neo.digitalWrite(pinFour, neo.HIGH)
+    neo.digitalWrite(pinSix, neo.HIGH)# write high value to pin
+    sleep(0.5)  # wait one second
 
-    neo.digitalWrite(pinFour, pinSix, neo.LOW)  # write low value to pin
-    sleep(0.1)  # wait one second
+    neo.digitalWrite(pinFour, neo.LOW)
+    neo.digitalWrite(pinSix, neo.LOW)
+    # write low value to pin
+    sleep(0.5)  # wait one second
 
-    neo.digitalWrite(pinTwo, pinSix, neo.HIGH)  # write high value to pin
-    sleep(0.1)  # wait one second
+    neo.digitalWrite(pinTwo, neo.HIGH)
+    neo.digitalWrite(pinSix, neo.HIGH)# write high value to pin
+    sleep(0.5)  # wait one second
 
-    neo.digitalWrite(pinTwo, pinSix, neo.LOW)  # write low value to pin
-    sleep(0.1)  # wait one secondneo.digitalWrite(pinTwo, pinSix, neo.HIGH)  # write high value to pin
-    sleep(0.1)  # wait one second
+    neo.digitalWrite(pinTwo, neo.LOW)
+    neo.digitalWrite(pinSix, neo.LOW)# write low value to pin
+    sleep(0.5)  # wait one secondneo.digitalWrite(pinTwo, pinSix, neo.HIGH)  # write high value to pin
 
-    neo.digitalWrite(pinTwo, pinFour, pinFive, pinSix, neo.HIGH)  # write low value to pin
-    sleep(0.1)  # wait one second
 
-    neo.digitalWrite(pinTwo, pinFour, pinFive, pinSix, neo.LOW)  # write high value to pin
-    sleep(0.1)  # wait one second
+    neo.digitalWrite(pinTwo, neo.HIGH)
+    neo.digitalWrite( pinFour, neo.HIGH)
+    neo.digitalWrite(pinFive,  neo.HIGH)
+    neo.digitalWrite( pinSix, neo.HIGH)  # write low value to pin
+    sleep(0.5)  # wait one second
+
+    neo.digitalWrite(pinTwo, neo.LOW)
+    neo.digitalWrite(pinFour, neo.LOW)
+    neo.digitalWrite(pinFive, neo.LOW)
+    neo.digitalWrite( pinSix, neo.LOW)
+    # write high value to pin
+    sleep(0.5)  # wait one second
 
 # Read pin
 print
