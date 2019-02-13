@@ -26,7 +26,4 @@ while 1:
             t = t // 2
 
             neo.digitalWrite(pinNum[y], num[y])
-            neo.digitalWrite(pinNum[y], num[y])
-            neo.digitalWrite(pinNum[y], num[y])
-            neo.digitalWrite(pinNum[y], num[y])
         sleep(1)
