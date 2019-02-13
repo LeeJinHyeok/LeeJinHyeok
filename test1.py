@@ -17,17 +17,14 @@ for i in range(0, 4):
     neo.digitalWrite(pinNum[i], 0)
     neo.pinMode(pinNum[i], neo.OUTPUT)
 
+num = [0, 0, 0, 0]
 while True:
     for x in range(0, 16):
-        num = [0, 0, 0, 0]
         t = x
         for y in range(0, 4):
             num[y] = t % 2
             t = t // 2
 
-            neo.digitalWrite(pinNum[S3], num[3])
-            neo.digitalWrite(pinNum[S2], num[2])
-            neo.digitalWrite(pinNum[S1], num[1])
-            neo.digitalWrite(pinNum[S0], num[0])
-        sleep(1)
+            neo.digitalWrite(pinNum, num)
+            sleep(1)
 
