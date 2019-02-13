@@ -3,7 +3,7 @@
 from neo import Gpio  # import Gpio library
 from time import sleep
 
-neo =Gpio()
+neo = Gpio()
 
 S0 = 2 # pin to use
 S1 = 3
@@ -13,18 +13,18 @@ S3 = 5
 
 pinNum = [S0,S1,S2,S3]
 # Blink example
-for i in range(0,4):
+for i in range(0, 4):
     neo.digitalWrite(pinNum[i], 0)
     neo.pinMode(pinNum[i], neo.OUTPUT)
 
-while 1:
-    for x in range(0,16):
+while True:
+    for x in range(0, 16):
         num = [0, 0, 0, 0]
         t = x
-        for y in range(0,4):
+        for y in range(0, 4):
             num[y] = t % 2
             t = t // 2
 
-        neo.digitalWrite(pinNum[y], num[y])
+            neo.digitalWrite(pinNum[y], num[y])
         sleep(1)
 
