@@ -1,4 +1,4 @@
-`# A easy Gpio library example for the Udoo Neo created by David Smerkous
+# A easy Gpio library example for the Udoo Neo created by David Smerkous
 # The current things this library can do
 
 # digitalWriting/Reading - Soon to come PWM
@@ -17,6 +17,7 @@ pinFour = 25
 neo.pinMode(pinTwo, neo.OUTPUT)  # Use innerbank pin 2 and set it as output either 0 (neo.INPUT) or 1 (neo.OUTPUT)
 neo.pinMode(pinThree, neo.INPUT)  # Use pin three(innerbank) and read set state to read
 neo.pinMode(pinFour, neo.OUTPUT)  # Use innerbank pin 2 and set it as output either 0 (neo.INPUT) or 1 (neo.OUTPUT)
+
 
 # Blink example
 for a in range(0, 10):  # Do for five times
