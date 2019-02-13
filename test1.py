@@ -16,6 +16,7 @@ pinSix = 3
 pinNum = [pinTwo,pinFour,pinFive,pinSix]
 # Blink example
 for i in pinNum:
+    neo.digitalWrite(pinNum[i], '0')
     neo.pinMode(pinNum[i], neo.OUTPUT)
 
 
@@ -28,8 +29,8 @@ while 1:
             t = t // 2
 
 
-        neo.digitalWrite(pinNum[pinSix], num[pinSix])
-        neo.digitalWrite(pinNum[pinFive], num[pinFive])
-        neo.digitalWrite(pinNum[pinFour], num[pinFour])
-        neo.digitalWrite(pinNum[pinTwo], num[pinTwo])
+        neo.digitalWrite(pinNum, num)
+        # neo.digitalWrite(pinNum[pinFive], num[pinFive])
+        # neo.digitalWrite(pinNum[pinFour], num[pinFour])
+        # neo.digitalWrite(pinNum[pinTwo], num[pinTwo])
         sleep(1)
