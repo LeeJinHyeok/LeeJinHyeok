@@ -1,4 +1,4 @@
-`# A easy Gpio library example for the Udoo Neo created by David Smerkous
+# A easy Gpio library example for the Udoo Neo created by David Smerkous
 # The current things this library can do
 
 # digitalWriting/Reading - Soon to come PWM
