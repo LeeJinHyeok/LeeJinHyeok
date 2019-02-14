@@ -59,9 +59,9 @@ if __name__ == '__main__':
                 raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
                 scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
                 v = raw * scale
-                t = (v - 500) / 10 - 6
+                temp = (v - 500) / 10 - 6
                 sleep(1)
-                print(t)
+
 
             epoch_time = int(time())    # epoch time
             SN1 = uniform(40, 50)       # random SN1 value
