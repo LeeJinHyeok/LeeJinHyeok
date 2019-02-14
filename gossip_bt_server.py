@@ -31,44 +31,43 @@ if __name__ == '__main__':
             # Use a copy() to get the copy of the set, avoiding 'set change size during iteration' error
             # Create CSV message "'realtime', time, temp, SN1, SN2, SN3, SN4, PM25\n"
 
-            # neo =Gpio()
-            #
-            # S0 = 2  # pin to use
-            # S1 = 3
-            # S2 = 4
-            # S3 = 5
-            #
-            # pinNum = [S0, S1, S2, S3]
-            #
-            # num = [0, 0, 0, 0]
-            #
-            # # Blink example
-            # for i in range(4):
-            #     neo.pinMode(pinNum[i], neo.OUTPUT)
-            #
-            # neo.digitalWrite(pinNum[0], 1)
-            # # sleep(0.5)
-            # neo.digitalWrite(pinNum[1], 1)
-            # # sleep(0.5)
-            # neo.digitalWrite(pinNum[2], 1)
-            # # sleep(0.5)
-            # neo.digitalWrite(pinNum[3], 1)
-            # # sleep(0.5)
-            epoch_time = time()
-            raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
-            scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
-            v = raw * scale
-            temp = (v - 500) / 10 - 6
-            sleep(1)
-
-
-
             epoch_time = int(time())    # epoch time
             SN1 = uniform(40, 50)       # random SN1 value
             SN2 = uniform(60, 70)       # random SN2 value
             SN3 = uniform(80, 90)       # random SN3 value
             SN4 = uniform(100, 110)     # random SN4 value
             PM25 = uniform(120, 130)    # random PM25 value
+
+            from neo import Gpio
+            neo = Gpio()
+
+            S0 = 2  # pin to use
+            S1 = 3
+            S2 = 4
+            S3 = 5
+
+            pinNum = [S0, S1, S2, S3]
+
+            num = [0, 0, 0, 0]
+
+            # Blink example
+            for i in range(4):
+                neo.pinMode(pinNum[i], neo.OUTPUT)
+
+            neo.digitalWrite(pinNum[0], 1)
+            # sleep(0.5)
+            neo.digitalWrite(pinNum[1], 1)
+            # sleep(0.5)
+            neo.digitalWrite(pinNum[2], 1)
+            # sleep(0.5)
+            neo.digitalWrite(pinNum[3], 1)
+            # sleep(0.5)
+            epoch_time = time()
+            raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
+            scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
+            v = raw * scale
+            temp = (v - 500) / 10 - 6
+            sleep(1)
 
             msg = ""
             if args.output_format == "csv":
