@@ -115,6 +115,6 @@ row_pins = [11, 10, 9, 8]
 #     neo.digital_write(column_pins[i], neo.LOW)
 
 for z in range(4):
-    neo.pin_mode(column_pins[z], neo.OUTPUT)
-    neo.digital_write(column_pins[z], neo.HIGH)
+    neo.pinMode(column_pins[z], neo.OUTPUT)
+    neo.digitalWrite(column_pins[z], neo.HIGH)
 
