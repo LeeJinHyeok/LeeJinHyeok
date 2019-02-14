@@ -110,9 +110,9 @@ from time import sleep  # import sleep to wait for blinks
 neo =Gpio()
 column_pins = [2, 3, 4, 5]
 row_pins = [11, 10, 9, 8]
-for i in range(4):
-    neo.pin_mode(column_pins[i], neo.OUTPUT)
-    neo.digital_write(column_pins[i], neo.LOW)
+# for i in range(4):
+#     neo.pin_mode(column_pins[i], neo.OUTPUT)
+#     neo.digital_write(column_pins[i], neo.LOW)
 
 for z in range(4):
     neo.pin_mode(column_pins[z], neo.OUTPUT)
