@@ -1,4 +1,4 @@
-import asyncore
+'''import asyncore
 import logging
 from bluetooth import *
 from bthandler import BTClientHandler
@@ -71,3 +71,4 @@ if __name__ == '__main__':
 
     server = BTServer(uuid, service_name)
     asyncore.loop()
+'''
