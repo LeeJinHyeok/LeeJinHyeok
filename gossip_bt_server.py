@@ -31,7 +31,6 @@ if __name__ == '__main__':
             # Use a copy() to get the copy of the set, avoiding 'set change size during iteration' error
             # Create CSV message "'realtime', time, temp, SN1, SN2, SN3, SN4, PM25\n"
 
-            neo = Gpio()
 
             S0 = 2  # pin to use
             S1 = 3
