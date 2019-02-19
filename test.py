@@ -17,13 +17,9 @@ for i in range(4):
     neo.pinMode(pinNum[i], neo.OUTPUT)
 
 neo.digitalWrite(pinNum[0], 1)
-# sleep(0.5)
 neo.digitalWrite(pinNum[1], 1)
-# sleep(0.5)
 neo.digitalWrite(pinNum[2], 1)
-# sleep(0.5)
 neo.digitalWrite(pinNum[3], 1)
-# sleep(0.5)
 
 while True:
     raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
