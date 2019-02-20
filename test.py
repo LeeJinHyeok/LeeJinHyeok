@@ -54,6 +54,7 @@ while True:
     c3 = raw * scale
 
     SN1 = ((c2 - 286) - (0.75 * (c3 - 292))) *3.876
+    SN1 = SN1 if (SN1 >= 0) else -SN1
     print(SN1)
 
     # Alphasense SN2
@@ -78,6 +79,7 @@ while True:
     c5 = raw * scale
 
     SN2 = ((c4 - 417) - (0.5 * (c5 - 402))) * 2.5445
+    SN2 = SN2 if (SN2 >= 0) else -SN2
     print(SN2)
 
     # Alphasense SN3
@@ -102,6 +104,7 @@ while True:
     c7 = raw * scale
 
     SN3 = ((c6 - 265) - (0.44 * (c7 - 281))) *3.4246
+    SN3 = SN3 if (SN3 >= 0) else -SN3
     print(SN3)
 
     # Alphasense SN4
@@ -126,6 +129,7 @@ while True:
     c9 = raw * scale
 
     SN4 = ((c8 - 275) - (0.6 * (c9 - 295)))*3.4722
+    SN4 = SN4 if (SN4 >= 0) else -SN4
     print(SN4)
     print('')
     # PM2.5
