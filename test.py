@@ -126,7 +126,8 @@ while True:
     c9 = raw * scale
 
     SN4 = ((c8 - 275) - (0.6 * (c9 - 295)))*3.4722
-    print(SN4+"\n")
+    print(SN4)
+    print('')
     # PM2.5
     neo.digitalWrite(pinNum[0], 1)
     neo.digitalWrite(pinNum[1], 1)
