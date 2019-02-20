@@ -16,16 +16,16 @@ num = [0,0,0,0]
 for i in range(4):
     neo.pinMode(pinNum[i], neo.OUTPUT)
 
-neo.digitalWrite(pinNum[0], 1)
-neo.digitalWrite(pinNum[1], 1)
-neo.digitalWrite(pinNum[2], 1)
-neo.digitalWrite(pinNum[3], 1)
+neo.digitalWrite(pinNum[0], 0)
+neo.digitalWrite(pinNum[1], 0)
+neo.digitalWrite(pinNum[2], 0)
+neo.digitalWrite(pinNum[3], 0)
 
 while True:
     raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     v = raw * scale
-    t = (v - 560)/10
+    t = (v - 590)/10
     sleep(1)
     print(t)
 

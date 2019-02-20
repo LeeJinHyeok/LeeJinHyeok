@@ -48,6 +48,7 @@ if __name__ == '__main__':
             for i in range(4):
                 neo.pinMode(pinNum[i], neo.OUTPUT)
 
+            epoch_time = time()
             #Temperature sensor
             neo.digitalWrite(pinNum[0], 0)
             neo.digitalWrite(pinNum[1], 0)
