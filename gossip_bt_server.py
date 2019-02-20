@@ -48,7 +48,7 @@ if __name__ == '__main__':
             for i in range(4):
                 neo.pinMode(pinNum[i], neo.OUTPUT)
 
-            epoch_time = time()
+
             #Temperature sensor
             neo.digitalWrite(pinNum[0], 0)
             neo.digitalWrite(pinNum[1], 0)
@@ -192,7 +192,7 @@ if __name__ == '__main__':
                           'O3_SN2': SN2,
                           'CO_SN3': SN3,
                           'SO2_SN4': SN4,
-                          'PM2.5': PM25}
+                          'PM25': PM25}
                 msg = json.dumps(output)
             try:
                 client_handler.send((msg + '\n').encode('ascii'))
