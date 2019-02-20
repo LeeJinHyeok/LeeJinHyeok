@@ -53,7 +53,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c3 = raw * scale
 
-    SN1 = ((c2 - 286) - (0.75 * (c3 - 292))) / 0.258
+    SN1 = ((c2 - 286) - (0.75 * (c3 - 292))) *3.876
     print(SN1)
 
     # Alphasense SN2
@@ -77,7 +77,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c5 = raw * scale
 
-    SN2 = ((c4 - 417) - (0.5 * (c5 - 402))) / 0.393
+    SN2 = ((c4 - 417) - (0.5 * (c5 - 402))) * 2.5445
     print(SN2)
 
     # Alphasense SN3
@@ -101,7 +101,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c7 = raw * scale
 
-    SN3 = ((c6 - 265) - (0.44 * (c7 - 281))) / 0.292
+    SN3 = ((c6 - 265) - (0.44 * (c7 - 281))) *3.4246
 
     # Alphasense SN4
     neo.digitalWrite(pinNum[0], 0)
@@ -124,7 +124,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c9 = raw * scale
 
-    SN4 = ((c8 - 275) - (0.6 * (c9 - 295)))/0.288
+    SN4 = ((c8 - 275) - (0.6 * (c9 - 295)))*3.4722
 
     # PM2.5
     neo.digitalWrite(pinNum[0], 1)
