@@ -131,7 +131,7 @@ while True:
     SN4 = ((c8 - 275) - (0.6 * (c9 - 295)))*3.4722
     SN4 = SN4 if (SN4 >= 0) else -SN4
     print(SN4)
-    print('')
+
     # PM2.5
     neo.digitalWrite(pinNum[0], 1)
     neo.digitalWrite(pinNum[1], 1)
@@ -146,6 +146,8 @@ while True:
     hppcf = (240.0 * pow(c11, 6) - (2491.3 * pow(c11, 5)) + 9448.7 * pow(c11, 4) - (14840.0 * pow(c11, 3)) + 10684.0 * pow(
         c11, 2) + 2211.8 * (c11) + 7.9623)
     PM25 = 0.518 + (0.00274 * hppcf)
+    print(PM25)
+    print('')
 
 #     neo.digitalWrite(pinNum[0], 0)
 #     neo.digitalWrite(pinNum[1], 1)
