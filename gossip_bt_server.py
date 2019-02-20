@@ -160,8 +160,8 @@ if __name__ == '__main__':
 
             #PM2.5
             neo.digitalWrite(pinNum[0], 1)
-            neo.digitalWrite(pinNum[1], 0)
-            neo.digitalWrite(pinNum[2], 1)
+            neo.digitalWrite(pinNum[1], 1)
+            neo.digitalWrite(pinNum[2], 0)
             neo.digitalWrite(pinNum[3], 1)
             sleep(0.05)
 
