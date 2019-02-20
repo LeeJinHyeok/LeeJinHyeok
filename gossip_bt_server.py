@@ -255,59 +255,59 @@ if __name__ == '__main__':
             hppcf = (240.0 * pow(c11, 6) - 2491.3 * pow(c11, 5) + 9448.7 * pow(c11, 4) - 14840.0 * pow(c11, 3) + 10684.0 * pow(c11, 2) + 2211.8 * (c11) + 7.9623)
             PM25 = 0.518 + .00274 * hppcf
 
-            #AQI Convesion for NO2_SN1
-            if SN1>=0 and SN1<=53 :
-                AQI_NO2 = ((50-0)*(SN1 - 0))/(53-0)+0
-            elif SN1 >= 54 and SN1 <= 100 :
-                AQI_NO2 = ((100-51)*(SN1-54))/(100-54) + 51
-            elif SN1 >= 101 and SN1 <= 360 :
-                AQI_NO2 = ((150-101)*(SN1-101))/(360-101) + 101
-            elif SN1 >= 361 and SN1 <= 649 :
-                AQI_NO2 = ((200-151)*(SN1-361))/(649-361) + 151
-            elif SN1 >= 650 and SN1 <= 1249 :
-                AQI_NO2 = ((300-201)*(SN1-650))/(1249-650) + 201
-            elif SN1 >= 1250 and SN1 <= 1649 :
-                AQI_NO2 = ((400-301)*(SN1-1250))/(1649-1250) + 301
-            elif SN1 >= 1650 and SN1 <= 2049 :
-                AQI_NO2 = ((500-401)*(SN1-1650))/(2049-1650) + 401
-            else:
-                AQI_NO2 = 500
+            # #AQI Convesion for NO2_SN1
+            # if SN1>=0 and SN1<=53 :
+            #     AQI_NO2 = ((50-0)*(SN1 - 0))/(53-0)+0
+            # elif SN1 >= 54 and SN1 <= 100 :
+            #     AQI_NO2 = ((100-51)*(SN1-54))/(100-54) + 51
+            # elif SN1 >= 101 and SN1 <= 360 :
+            #     AQI_NO2 = ((150-101)*(SN1-101))/(360-101) + 101
+            # elif SN1 >= 361 and SN1 <= 649 :
+            #     AQI_NO2 = ((200-151)*(SN1-361))/(649-361) + 151
+            # elif SN1 >= 650 and SN1 <= 1249 :
+            #     AQI_NO2 = ((300-201)*(SN1-650))/(1249-650) + 201
+            # elif SN1 >= 1250 and SN1 <= 1649 :
+            #     AQI_NO2 = ((400-301)*(SN1-1250))/(1649-1250) + 301
+            # elif SN1 >= 1650 and SN1 <= 2049 :
+            #     AQI_NO2 = ((500-401)*(SN1-1650))/(2049-1650) + 401
+            # else:
+            #     AQI_NO2 = 500
 
-            # AQI Convesion for O3_SN2
-            if SN2 >= 0 and SN2 <= 53:
-                AQI_NO2 = ((50 - 0) * (SN1 - 0)) / (53 - 0) + 0
-            elif SN2 >= 54 and SN2 <= 100:
-                AQI_NO2 = ((100 - 51) * (SN1 - 54)) / (100 - 54) + 51
-            elif SN2 >= 101 and SN2 <= 360:
-                AQI_NO2 = ((150 - 101) * (SN1 - 101)) / (360 - 101) + 101
-            elif SN2 >= 361 and SN2 <= 649:
-                AQI_NO2 = ((200 - 151) * (SN1 - 361)) / (649 - 361) + 151
-            elif SN2 >= 650 and SN2 <= 1249:
-                AQI_NO2 = ((300 - 201) * (SN1 - 650)) / (1249 - 650) + 201
-            elif SN2 >= 1250 and SN2 <= 1649:
-                AQI_NO2 = ((400 - 301) * (SN1 - 1250)) / (1649 - 1250) + 301
-            elif SN2 >= 1650 and SN2 <= 2049:
-                AQI_NO2 = ((500 - 401) * (SN1 - 1650)) / (2049 - 1650) + 401
-            else:
-                AQI_NO2 = 500
-
-            # AQI Convesion for CO_SN3
-            if SN3 >= 0 and SN3 <= 4.4:
-                AQI_CO = ((50 - 0) * (SN3 - 0)) / (4.4 - 0) + 0
-            elif SN3 > 4.4 and SN3 <= 9.4:
-                AQI_CO = ((100 - 51) * (SN3 - 4.4)) / (9.4 - 4.5) + 51
-            elif SN3 > 9.4 and SN3 <= 12.4:
-                AQI_CO = ((150 - 101) * (SN3 - 9.4)) / (12.4 - 9.5) + 101
-            elif SN3 > 12.4 and SN3 <= 649:
-                AQI_CO = ((200 - 151) * (SN3 - 12.4)) / (15.4 - 12.5) + 151
-            elif SN3 > 650 and SN3 <= 1249:
-                AQI_CO = ((300 - 201) * (SN3 - )) / (1249 - 650) + 201
-            elif SN3 > 1250 and SN3 <= 1649:
-                AQI_CO = ((400 - 301) * (SN3 - 1250)) / (1649 - 1250) + 301
-            elif SN3 > 1650 and SN3 <= 2049:
-                AQI_CO = ((500 - 401) * (SN3 - 1650)) / (2049 - 1650) + 401
-            else:
-                AQI_CO = 500
+            # # AQI Convesion for O3_SN2
+            # if SN2 >= 0 and SN2 <= 53:
+            #     AQI_NO2 = ((50 - 0) * (SN1 - 0)) / (53 - 0) + 0
+            # elif SN2 >= 54 and SN2 <= 100:
+            #     AQI_NO2 = ((100 - 51) * (SN1 - 54)) / (100 - 54) + 51
+            # elif SN2 >= 101 and SN2 <= 360:
+            #     AQI_NO2 = ((150 - 101) * (SN1 - 101)) / (360 - 101) + 101
+            # elif SN2 >= 361 and SN2 <= 649:
+            #     AQI_NO2 = ((200 - 151) * (SN1 - 361)) / (649 - 361) + 151
+            # elif SN2 >= 650 and SN2 <= 1249:
+            #     AQI_NO2 = ((300 - 201) * (SN1 - 650)) / (1249 - 650) + 201
+            # elif SN2 >= 1250 and SN2 <= 1649:
+            #     AQI_NO2 = ((400 - 301) * (SN1 - 1250)) / (1649 - 1250) + 301
+            # elif SN2 >= 1650 and SN2 <= 2049:
+            #     AQI_NO2 = ((500 - 401) * (SN1 - 1650)) / (2049 - 1650) + 401
+            # else:
+            #     AQI_NO2 = 500
+            #
+            # # AQI Convesion for CO_SN3
+            # if SN3 >= 0 and SN3 <= 4.4:
+            #     AQI_CO = ((50 - 0) * (SN3 - 0)) / (4.4 - 0) + 0
+            # elif SN3 > 4.4 and SN3 <= 9.4:
+            #     AQI_CO = ((100 - 51) * (SN3 - 4.4)) / (9.4 - 4.5) + 51
+            # elif SN3 > 9.4 and SN3 <= 12.4:
+            #     AQI_CO = ((150 - 101) * (SN3 - 9.4)) / (12.4 - 9.5) + 101
+            # elif SN3 > 12.4 and SN3 <= 649:
+            #     AQI_CO = ((200 - 151) * (SN3 - 12.4)) / (15.4 - 12.5) + 151
+            # elif SN3 > 650 and SN3 <= 1249:
+            #     AQI_CO = ((300 - 201) * (SN3 - )) / (1249 - 650) + 201
+            # elif SN3 > 1250 and SN3 <= 1649:
+            #     AQI_CO = ((400 - 301) * (SN3 - 1250)) / (1649 - 1250) + 301
+            # elif SN3 > 1650 and SN3 <= 2049:
+            #     AQI_CO = ((500 - 401) * (SN3 - 1650)) / (2049 - 1650) + 401
+            # else:
+            #     AQI_CO = 500
 
             msg = ""
             if args.output_format == "csv":
@@ -316,7 +316,7 @@ if __name__ == '__main__':
                 output = {'type': 'realtime',
                           'time': epoch_time,
                           'temp': temp,
-                          'NO2_AQI': AQI_NO2,
+                          'NO2_AQI': SN1,
                           'O3_AQI': SN2,
                           'CO_AQI': SN3,
                           'SO2_AQI': SN4,
