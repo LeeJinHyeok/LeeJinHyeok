@@ -81,8 +81,8 @@ def get_alpha(temper, air): #air = NO2,O3, CO, SO2
 
     return N
 
-
-get_alpha(50,'O3')
+# get_alpha example
+# get_alpha(50,'O3')
 
 
 if __name__ == '__main__':
@@ -316,11 +316,11 @@ if __name__ == '__main__':
                 output = {'type': 'realtime',
                           'time': epoch_time,
                           'temp': temp,
-                          'NO2_AQI': SN1,
-                          'O3_AQI': SN2,
-                          'CO_AQI': SN3,
-                          'SO2_AQI': SN4,
-                          'PM25_AQI': PM25}
+                          'NO2_SN1': SN1,
+                          'O3_SN2': SN2,
+                          'CO_SN3': SN3,
+                          'SO2_SN4': SN4,
+                          'PM25': PM25}
                 msg = json.dumps(output)
             try:
                 client_handler.send((msg + '\n').encode('ascii'))

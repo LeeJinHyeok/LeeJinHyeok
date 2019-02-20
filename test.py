@@ -15,6 +15,77 @@ num = [0,0,0,0]
 # Blink example
 for i in range(4):
     neo.pinMode(pinNum[i], neo.OUTPUT)
+########################### N table ###################################
+#array for calculate alph
+#temp              -30,  -20   -10     0    10     20   30    40    50
+#index               0,    1,    2,    3,    4,    5,    6,    7 ,   8
+O3_tempArray  = [ 0.18, 0.18, 0.18, 0.18, 0.18, 0.18, 0.18, 0.18, 2.87]
+SO2_tempArray = [ 0.85, 0.85, 0.85, 0.85, 0.85, 1.15, 1.45, 1.75, 1.95]
+NO2_tempArray = [ 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 1.18, 2.00, 2.70]
+CO_tempArray  = [ 1.40, 1.03, 0.85, 0.62, 0.30, 0.03,-0.25,-0.48,-0.80]
+#######################################################################
+
+def get_alpha(temper, air): #air = NO2,O3, CO, SO2
+    temper
+    i=0 #index
+    mulx=0 # multiple #times
+    if(-30<=temper<-20):
+        i = 0;
+        mulx = temper + 30  # ex -28'C + 30 = 2 >> 2
+    elif(-20<=temper<-10):
+        i = 1;
+        mulx = temper + 20
+    elif (-10 <= temper < 0):
+        i = 2;
+        mulx = temper + 10
+    elif (0 <= temper < 10):
+        i = 3;
+        mulx = temper
+    elif (10 <= temper < 20):
+        i = 4;
+        mulx = temper -10
+    elif (20 <= temper < 30):
+        i = 5;
+        mulx = temper -20
+    elif (30 <= temper < 40):
+        i = 6;
+        mulx = temper -30
+    elif (40 <= temper < 50):
+        i = 7;
+        mulx = temper - 40
+    elif (50 <= temper):
+        i = 8; # if temperature exceed 50 just give 50'C data
+
+    N =0.0
+    if(air == 'O3'):
+        if(i==8):
+            N=O3_tempArray[i]
+        else:
+            tmp=( O3_tempArray[i + 1] - O3_tempArray[i] ) / 10.0
+            N=O3_tempArray[i] + (tmp * mulx)
+
+    elif(air == 'CO'):
+        if(i==8):
+            N=CO_tempArray[i]
+        else:
+            tmp=( CO_tempArray[i + 1] - CO_tempArray[i] ) / 10.0
+            N=CO_tempArray[i] + (tmp * mulx)
+
+    elif(air == 'NO2'):
+        if(i==8):
+            N=NO2_tempArray[i]
+        else:
+            tmp=( NO2_tempArray[i + 1] - NO2_tempArray[i] ) / 10.0
+            N=NO2_tempArray[i] + (tmp * mulx)
+
+    elif (air == 'SO2'):
+        if(i==8):
+            N=SO2_tempArray[i]
+        else:
+            tmp=( SO2_tempArray[i + 1] - SO2_tempArray[i] ) / 10.0
+            N=SO2_tempArray[i] + (tmp * mulx)
+
+    return N
 
 
 
@@ -53,7 +124,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c3 = raw * scale
 
-    SN1 = ((c2 - 286) - (0.75 * (c3 - 292))) *3.876
+    SN1 = ((c2 - 286) - (get_alpha(temp, 'NO2')) * (c3 - 292)) * 3.876
     SN1 = SN1 if (SN1 >= 0) else -SN1
     print(SN1)
 
@@ -78,7 +149,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c5 = raw * scale
 
-    SN2 = ((c4 - 417) - (0.5 * (c5 - 402))) * 2.5445
+    SN2 = ((c4 - 417) - (get_alpha(temp, 'O3')) * (c5 - 402)) * 2.5445
     SN2 = SN2 if (SN2 >= 0) else -SN2
     print(SN2)
 
@@ -103,7 +174,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c7 = raw * scale
 
-    SN3 = ((c6 - 265) - (0.44 * (c7 - 281))) *3.4246
+    SN3 = ((c6 - 265) - (get_alpha(temp, 'CO')) * (c7 - 281)) * 3.4246
     SN3 = SN3 if (SN3 >= 0) else -SN3
     print(SN3)
 
@@ -128,7 +199,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c9 = raw * scale
 
-    SN4 = ((c8 - 275) - (0.6 * (c9 - 295)))*3.4722
+    SN4 = ((c8 - 275) - (get_alpha(temp, 'SO2')) * (c9 - 295)) * 3.4722
     SN4 = SN4 if (SN4 >= 0) else -SN4
     print(SN4)
 
