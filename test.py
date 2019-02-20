@@ -165,6 +165,7 @@ while True:
         AQI_NO2 = ((500 - 401) * (SN1 - 1650)) / (2049 - 1650) + 401
     else:
         AQI_NO2 = 500
+    print(AQI_NO2)
     print('')
 
 #     neo.digitalWrite(pinNum[0], 0)
