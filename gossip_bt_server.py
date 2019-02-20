@@ -33,13 +33,6 @@ if __name__ == '__main__':
             # Create CSV message "'realtime', time, temp, SN1, SN2, SN3, SN4, PM25\n"
 
             epoch_time = int(time())    # epoch time
-            SN1 = uniform(40, 50)       # random SN1 value
-            SN2 = uniform(60, 70)       # random SN2 value
-            SN3 = uniform(80, 90)       # random SN3 value
-            SN4 = uniform(100, 110)     # random SN4 value
-            PM25 = uniform(120, 130)    # random PM25 value
-
-
             neo = Gpio()
 
             S0 = 2  # pin to use
@@ -68,7 +61,7 @@ if __name__ == '__main__':
             scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
             c0 = raw * scale
 
-            temp = (c0 - 550) / 10
+            temp = (c0 - 590) / 10
 
 
             #Alphasense SN1
@@ -181,8 +174,6 @@ if __name__ == '__main__':
 
 
 
-
-
             msg = ""
             if args.output_format == "csv":
                 msg = "realtime, {}, {}, {}, {}, {}, {}, {}".format(epoch_time, temp, SN1, SN2, SN3, SN4, PM25)
@@ -190,11 +181,11 @@ if __name__ == '__main__':
                 output = {'type': 'realtime',
                           'time': epoch_time,
                           'temp': temp,
-                          'SN1': SN1,
-                          'SN2': SN2,
-                          'SN3': SN3,
-                          'SN4': SN4,
-                          'PM25': PM25}
+                          'NO2_SN1': SN1,
+                          'O3_SN2': SN2,
+                          'CO_SN3': SN3,
+                          'SO2_SN4': SN4,
+                          'PM2.5': PM25}
                 msg = json.dumps(output)
             try:
                 client_handler.send((msg + '\n').encode('ascii'))
