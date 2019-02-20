@@ -236,6 +236,7 @@ while True:
         AQI_NO2 = 500
     print(AQI_NO2)
     print('')
+sleep(2.5)
 
 #     neo.digitalWrite(pinNum[0], 0)
 #     neo.digitalWrite(pinNum[1], 1)
