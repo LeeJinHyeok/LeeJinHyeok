@@ -57,12 +57,13 @@ if __name__ == '__main__':
             sleep(0.05)
 
 
-            epoch_time = time()
+
             raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
             scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
             c0 = raw * scale
 
             temp = (c0 - 590) / 10
+
 
 
             #Alphasense SN1
