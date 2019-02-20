@@ -100,7 +100,9 @@ while True:
     c0= raw * scale
     temp_celsius = (c0 - 630) / 10
     temp = (temp_celsius * 1.8) + 32
+    print(temp_celsius)
     print(temp)
+
 
     # Alphasense SN1
     neo.digitalWrite(pinNum[0], 0)
