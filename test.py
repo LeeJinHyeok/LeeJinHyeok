@@ -27,7 +27,6 @@ while True:
     v = raw * scale
     t = (v - 560)/10
     sleep(1)
-    print(v)
     print(t)
 
 # neo.digitalWrite(pinNum[0], 1)
