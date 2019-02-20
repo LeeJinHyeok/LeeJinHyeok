@@ -102,6 +102,7 @@ while True:
     c7 = raw * scale
 
     SN3 = ((c6 - 265) - (0.44 * (c7 - 281))) *3.4246
+    print(SN3)
 
     # Alphasense SN4
     neo.digitalWrite(pinNum[0], 0)
@@ -125,7 +126,7 @@ while True:
     c9 = raw * scale
 
     SN4 = ((c8 - 275) - (0.6 * (c9 - 295)))*3.4722
-
+    print(SN4+"\n")
     # PM2.5
     neo.digitalWrite(pinNum[0], 1)
     neo.digitalWrite(pinNum[1], 1)
