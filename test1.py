@@ -30,4 +30,4 @@ while True:
     t = (v - 590)/10
 
     temp = (t * 1.8) + 32
-    print(temp)
+    print(v)
