@@ -239,7 +239,7 @@ if __name__ == '__main__':
             raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
             scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
             c0 = raw * scale
-            temp_celsius = (c0-630) / 10 -13
+            temp_celsius = (c0-630) / 10 -15
             temp = (temp_celsius * 1.8) +32
 
 
@@ -365,7 +365,7 @@ if __name__ == '__main__':
 
             msg = ""
             if args.output_format == "csv":
-                msg = "realtime, {}, {}, {}, {}, {}, {}, {}".format(epoch_time, temp, SN1, SN2, SN3, SN4, PM25)
+                msg = "realtime, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(epoch_time, temp, SN1, SN2, SN3, SN4, PM25, AQI_SN1, AQI_SN2, AQI_SN3, AQI_SN4, AQI_PM25)
             elif args.output_format == "json":
                 output = {'type': 'realtime',
                           'time': epoch_time,
@@ -374,7 +374,12 @@ if __name__ == '__main__':
                           'O3_SN2': SN2,
                           'CO_SN3': SN3,
                           'SO2_SN4': SN4,
-                          'PM25': PM25}
+                          'PM25': PM25,
+                          'AQI_SN1': AQI_SN1,
+                          'AQI_SN2': AQI_SN2,
+                          'AQI_SN3': AQI_SN3,
+                          'AQI_SN4': AQI_SN4,
+                          'AQI_PM25': AQI_PM25}
                 msg = json.dumps(output)
             try:
                 client_handler.send((msg + '\n').encode('ascii'))
