@@ -1,4 +1,3 @@
-
 from time import sleep, time
 from neo import Gpio
 
@@ -321,6 +320,7 @@ while True:
     PM25 = 0.518 + .00274 * hppcf
     AQI_PM25 = AQI_convert(PM25, 'PM25')
 
+    print('Temp : ' + temp)
     print('AQI_SN1 : ' + AQI_SN1)
     print('AQI_SN2 : ' + AQI_SN2)
     print('AQI_SN3 : ' + AQI_SN3)
@@ -380,6 +380,5 @@ while True:
     #     AQI_CO = ((500 - 401) * (SN3 - 1650)) / (2049 - 1650) + 401
     # else:
     #     AQI_CO = 500
-
-sleep(2.5)
+    sleep(2.5)
 
