@@ -8,6 +8,7 @@ from random import uniform
 from threading import Thread
 from time import sleep, time
 from neo import Gpio
+import datetime
 
 ########################### N table ###################################
 #array for calculate alph
@@ -210,7 +211,7 @@ if __name__ == '__main__':
             # Use a copy() to get the copy of the set, avoiding 'set change size during iteration' error
             # Create CSV message "'realtime', time, temp, SN1, SN2, SN3, SN4, PM25\n"
 
-            epoch_time = int(time())    # epoch time
+            epoch_time = datetime.datetime.now()     # epoch time
             neo = Gpio()
 
             S0 = 2  # pin to use
