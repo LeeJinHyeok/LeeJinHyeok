@@ -170,8 +170,8 @@ def AQI_convert( c , air):
                 break;
 
             if ( O3_8Min_AqiArray[i] <= c <= O3_8Max_AqiArray[i] ):
-                c_low = O3_8Max_AqiArray[i];
-                c_high = O3_8Min_AqiArray[i];
+                c_low = O3_8Min_AqiArray[i];
+                c_high = O3_8Max_AqiArray[i];
                 i_low = Aqi_MinAqiArray[i];
                 i_high = Aqi_MaxAqiArray[i];
                 break;
