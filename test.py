@@ -321,10 +321,10 @@ while True:
     # AQI_PM25 = AQI_convert(PM25, 'PM25')
 
     print(temp)
-    print('AQI_SN1 : ' + SN1)
-    print('AQI_SN2 : ' + SN2)
-    print('AQI_SN3 : ' + SN3)
-    print('AQI_SN4 : ' + SN4)
+    print(SN1)
+    print(SN2)
+    print(SN3)
+    print(SN4)
     print(PM25)
 
 
