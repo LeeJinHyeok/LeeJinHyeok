@@ -320,6 +320,7 @@ while True:
     PM25 = 0.518 + .00274 * hppcf
     # AQI_PM25 = AQI_convert(PM25, 'PM25')
 
+    print(temp_celsius)
     print(temp)
     print(SN1)
     print(SN2)
