@@ -84,6 +84,7 @@ def get_alpha(temper, air): #air = NO2,O3, CO, SO2
 
 
 
+
 ############################ AQI table ##################################
 #AQI              0-50,  51-100, 101-150, 151-200, 201-300, 301-400, 401-500
 #index               0,       1,       2,       3,       4,       5,       6,
@@ -116,41 +117,60 @@ def AQI_convert( c , air):
 
     if (air == 'PM25'):
         for i in range(0, 7):
-            if ( PM25_MinAqiArray[i] <= c <= PM25_MaxAqiArray[i] ):
-                c_low = PM25_MinAqiArray[i]
-                c_high = PM25_MaxAqiArray[i]
-                i_low = Aqi_MaxAqiArray[i]
-                i_high = Aqi_MinAqiArray[i]
-                break
+            if(PM25_MaxAqiArray[6] < c):
+                I=500
+                break;
+
+            elif ( PM25_MinAqiArray[i] <= c <= PM25_MaxAqiArray[i] ):
+                c_low = PM25_MinAqiArray[i];
+                c_high = PM25_MaxAqiArray[i];
+                i_low = Aqi_MaxAqiArray[i];
+                i_high = Aqi_MinAqiArray[i];
+                break;
+
     elif (air == 'CO'):
         for i in range(0, 7):
-            if ( CO_MinAqiArray[i] <= c <= CO_MaxAqiArray[i] ):
-                c_low = CO_MinAqiArray[i]
-                c_high = CO_MaxAqiArray[i]
-                i_low = Aqi_MaxAqiArray[i]
-                i_high = Aqi_MinAqiArray[i]
-                break
+            if (CO_MaxAqiArray[6] < c):
+                I = 500
+                break;
+
+            elif ( CO_MinAqiArray[i] <= c <= CO_MaxAqiArray[i] ):
+                c_low = CO_MinAqiArray[i];
+                c_high = CO_MaxAqiArray[i];
+                i_low = Aqi_MaxAqiArray[i];
+                i_high = Aqi_MinAqiArray[i];
+                break;
     elif (air == 'SO2'):
         for i in range(0, 7):
-            if ( SO2_MinAqiArray[i] <= c <= SO2_MaxAqiArray[i] ):
-                c_low = SO2_MinAqiArray[i]
-                c_high = SO2_MaxAqiArray[i]
-                i_low = Aqi_MaxAqiArray[i]
-                i_high = Aqi_MinAqiArray[i]
-                break
+            if (SO2_MaxAqiArray[6] < c):
+                I = 500
+                break;
+
+            elif ( SO2_MinAqiArray[i] <= c <= SO2_MaxAqiArray[i] ):
+                c_low = SO2_MinAqiArray[i];
+                c_high = SO2_MaxAqiArray[i];
+                i_low = Aqi_MaxAqiArray[i];
+                i_high = Aqi_MinAqiArray[i];
+                break;
     elif (air == 'NO2'):
         for i in range(0, 7):
+            if (NO2_MaxAqiArray[6] < c):
+                I = 500
+                break;
+
             if ( NO2_MinAqiArray[i] <= c <= NO2_MaxAqiArray[i] ):
-                c_low = NO2_MinAqiArray[i]
-                c_high = NO2_MaxAqiArray[i]
-                i_low = Aqi_MaxAqiArray[i]
-                i_high = Aqi_MinAqiArray[i]
-                break
+                c_low = NO2_MinAqiArray[i];
+                c_high = NO2_MaxAqiArray[i];
+                i_low = Aqi_MaxAqiArray[i];
+                i_high = Aqi_MinAqiArray[i];
+                break;
 
     ###################computing AQI formula####################
-    I = (((i_high - i_low)/(c_high - c_low))*(c-c_low)) + i_low
+    if(I!=500):
+        I = (((i_high - i_low) / (c_high - c_low)) * (c - c_low)) + i_low
     ############################################################
 
+    #not yet
     if (air == 'O3'):
         c_low = 0.0
         c_high = 0.0
@@ -161,25 +181,22 @@ def AQI_convert( c , air):
         I_03_1=0.0
         for i in range(0, 7):
             if (O3_8Min_AqiArray[i] <= c <= O3_8Max_AqiArray[i]):
-                c_low = PM25_MinAqiArray[i]
-                c_high = PM25_MaxAqiArray[i]
-                i_low = Aqi_MaxAqiArray[i]
-                i_high = Aqi_MinAqiArray[i]
+                c_low = PM25_MinAqiArray[i];
+                c_high = PM25_MaxAqiArray[i];
+                i_low = Aqi_MaxAqiArray[i];
+                i_high = Aqi_MinAqiArray[i];
                 I_O3_8 = (((i_high - i_low) / (c_high - c_low)) * (c - c_low)) + i_low
-                break
-
+                break;
         for i in range(0, 7):
             if (O3_1MinAqiArray <= c <= O3_1MaxAqiArray[i]):
-                c_low = PM25_MinAqiArray[i]
-                c_high = PM25_MaxAqiArray[i]
-                i_low = Aqi_MaxAqiArray[i]
-                i_high = Aqi_MinAqiArray[i]
+                c_low = PM25_MinAqiArray[i];
+                c_high = PM25_MaxAqiArray[i];
+                i_low = Aqi_MaxAqiArray[i];
+                i_high = Aqi_MinAqiArray[i];
                 I_O3_1 = (((i_high - i_low) / (c_high - c_low)) * (c - c_low)) + i_low
-                break
+                break;
 
-
-    return I
-
+    return I;
 
 
 # get_alpha example
@@ -292,7 +309,7 @@ if __name__ == '__main__':
 
             SN2 = ((c4-417)- (get_alpha(temp,'O3'))*(c5-402))* 2.5445
             SN2 = SN2 if (SN2 >= 0) else -SN2
-            AQI_SN2 = AQI_convert(SN2, 'O3')
+          #  AQI_SN2 = AQI_convert(SN2, 'O3')
 
             #Alphasense SN3
             neo.digitalWrite(pinNum[0], 0)
