@@ -320,13 +320,13 @@ while True:
     PM25 = 0.518 + .00274 * hppcf
     # AQI_PM25 = AQI_convert(PM25, 'PM25')
 
-    print('Temp : ' + temp)
+    print(temp)
     print('AQI_SN1 : ' + SN1)
     print('AQI_SN2 : ' + SN2)
     print('AQI_SN3 : ' + SN3)
     print('AQI_SN4 : ' + SN4)
-    print('AQI_PM2.5 : ' + PM25)
-    
+    print(PM25)
+
 
     # #AQI Convesion for NO2_SN1
     # if SN1>=0 and SN1<=53 :
