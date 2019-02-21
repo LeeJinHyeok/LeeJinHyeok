@@ -206,7 +206,7 @@ while True:
     raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c0 = raw * scale
-    temp_celsius = (c0 - 630) / 10 -56
+    temp_celsius = (c0 - 630) / 10 -3
     temp = (temp_celsius * 1.8) + 32
 
     # Alphasense SN1
@@ -341,7 +341,6 @@ while True:
     print("PM25=",PM25)
     print("AQI_PM25=", AQI_PM25)
     print(epoch_time)
-
 
     sleep(2.5)
 
