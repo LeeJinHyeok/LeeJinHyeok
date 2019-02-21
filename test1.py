@@ -13,3 +13,4 @@ while True:
     temp = (t * 1.8) + 32
     sleep(1)
     print(t)
+    print(temp)

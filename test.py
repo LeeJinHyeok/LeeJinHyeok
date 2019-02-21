@@ -43,6 +43,8 @@ def get_alpha(temper, air):  # air = NO2,O3, CO, SO2
         mulx = temper - 40
     elif (50 <= temper):
         i = 8;  # if temperature exceed 50 just give 50'C data
+    # else :
+    #     i = 9
 
     N = 0.0
     if (air == 'O3'):
@@ -209,7 +211,7 @@ while True:
     for i in range(4):
         neo.pinMode(pinNum[i], neo.OUTPUT)
 
-        # Temperature sensor
+    # Temperature sensor
     neo.digitalWrite(pinNum[0], 0)
     neo.digitalWrite(pinNum[1], 0)
     neo.digitalWrite(pinNum[2], 0)
