@@ -326,6 +326,7 @@ while True:
     print('AQI_SN3 : ' + SN3)
     print('AQI_SN4 : ' + SN4)
     print('AQI_PM2.5 : ' + PM25)
+    
 
     # #AQI Convesion for NO2_SN1
     # if SN1>=0 and SN1<=53 :
