@@ -116,8 +116,8 @@ def AQI_convert( c , air):
             elif ( PM25_MinAqiArray[i] <= c <= PM25_MaxAqiArray[i] ):
                 c_low = PM25_MinAqiArray[i];
                 c_high = PM25_MaxAqiArray[i];
-                i_low = Aqi_MaxAqiArray[i];
-                i_high = Aqi_MinAqiArray[i];
+                i_low = Aqi_MinAqiArray[i];
+                i_high = Aqi_MaxAqiArray[i];
                 break;
 
     elif (air == 'CO'):
@@ -129,8 +129,8 @@ def AQI_convert( c , air):
             elif ( CO_MinAqiArray[i] <= c <= CO_MaxAqiArray[i] ):
                 c_low = CO_MinAqiArray[i];
                 c_high = CO_MaxAqiArray[i];
-                i_low = Aqi_MaxAqiArray[i];
-                i_high = Aqi_MinAqiArray[i];
+                i_low = Aqi_MinAqiArray[i];
+                i_high = Aqi_MaxAqiArray[i];
                 break;
     elif (air == 'SO2'):
         for i in range(0, 7):
@@ -141,8 +141,8 @@ def AQI_convert( c , air):
             elif ( SO2_MinAqiArray[i] <= c <= SO2_MaxAqiArray[i] ):
                 c_low = SO2_MinAqiArray[i];
                 c_high = SO2_MaxAqiArray[i];
-                i_low = Aqi_MaxAqiArray[i];
-                i_high = Aqi_MinAqiArray[i];
+                i_low = Aqi_MinAqiArray[i];
+                i_high = Aqi_MaxAqiArray[i];
                 break;
     elif (air == 'NO2'):
         for i in range(0, 7):
@@ -153,8 +153,8 @@ def AQI_convert( c , air):
             if ( NO2_MinAqiArray[i] <= c <= NO2_MaxAqiArray[i] ):
                 c_low = NO2_MinAqiArray[i];
                 c_high = NO2_MaxAqiArray[i];
-                i_low = Aqi_MaxAqiArray[i];
-                i_high = Aqi_MinAqiArray[i];
+                i_low = Aqi_MinAqiArray[i];
+                i_high = Aqi_MaxAqiArray[i];
                 break;
 
     ###################computing AQI formula####################
@@ -175,16 +175,16 @@ def AQI_convert( c , air):
             if (O3_8Min_AqiArray[i] <= c <= O3_8Max_AqiArray[i]):
                 c_low = PM25_MinAqiArray[i];
                 c_high = PM25_MaxAqiArray[i];
-                i_low = Aqi_MaxAqiArray[i];
-                i_high = Aqi_MinAqiArray[i];
+                i_low = Aqi_MinAqiArray[i];
+                i_high = Aqi_MaxAqiArray[i];
                 I_O3_8 = (((i_high - i_low) / (c_high - c_low)) * (c - c_low)) + i_low
                 break;
         for i in range(0, 7):
             if (O3_1MinAqiArray <= c <= O3_1MaxAqiArray[i]):
                 c_low = PM25_MinAqiArray[i];
                 c_high = PM25_MaxAqiArray[i];
-                i_low = Aqi_MaxAqiArray[i];
-                i_high = Aqi_MinAqiArray[i];
+                i_low = Aqi_MinAqiArray[i];
+                i_high = Aqi_MaxAqiArray[i];
                 I_O3_1 = (((i_high - i_low) / (c_high - c_low)) * (c - c_low)) + i_low
                 break;
 
