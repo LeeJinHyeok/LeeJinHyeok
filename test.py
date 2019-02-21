@@ -84,12 +84,12 @@ def get_alpha(temper, air):  # air = NO2,O3, CO, SO2
 #AQI              0-50,  51-100, 101-150, 151-200, 201-300, 301-400, 401-500
 #index               0,       1,       2,       3,       4,       5,       6,
 #MAX (038, O31, PM25, CO, SO2, NO2, AQI)
-O3_8Max_AqiArray  = [54.0, 70.0, 85.0, 105.0, 200.0,  0.0,  0.0]
-PM25_MaxAqiArray  = [12.0, 35.4, 55.4, 150.4, 250.4, 350.4, 500.4]
-CO_MaxAqiArray    = [4.4, 9.4, 12.4, 15.4, 30.4, 40.4, 50.4]
-SO2_MaxAqiArray   = [35.0, 75.0, 185.0, 304.0, 604.0, 804.0, 1004.0]
-NO2_MaxAqiArray   = [53.0, 100.0, 360.0, 649.0, 1249.0, 1649.0, 2049.0]
-Aqi_MaxAqiArray   = [50.0, 100.0, 150.0, 200.0, 300.0, 400.0, 500.0]
+O3_8Max_AqiArray  = [55.0, 71.0, 86.0, 106.0, 200.0,  0.0,  0.0]
+PM25_MaxAqiArray  = [12.1, 35.5, 55.5, 150.5, 250.5, 350.5, 500.4]
+CO_MaxAqiArray    = [4.5, 9.5, 12.5, 15.5, 30.5, 40.5, 50.4]
+SO2_MaxAqiArray   = [36.0, 76.0, 186.0, 305.0, 605.0, 805.0, 1004.0]
+NO2_MaxAqiArray   = [54.0, 101.0, 361.0, 650.0, 1250.0, 1650.0, 2049.0]
+Aqi_MaxAqiArray   = [51.0, 101.0, 151.0, 201.0, 301.0, 401.0, 500.0]
 
 #MIN (038, O31, PM25, CO, SO2, NO2, AQI)
 O3_8Min_AqiArray  = [0.0, 55.0, 71.0, 86.0, 106.0, 0.0, 0.0]
@@ -115,7 +115,7 @@ def AQI_convert( c , air):
                 I=500
                 break;
 
-            elif ( PM25_MinAqiArray[i] <= c <= PM25_MaxAqiArray[i] ):
+            elif ( PM25_MinAqiArray[i] <= c < PM25_MaxAqiArray[i] ):
                 c_low = PM25_MinAqiArray[i];
                 c_high = PM25_MaxAqiArray[i];
                 i_low = Aqi_MinAqiArray[i];
@@ -128,7 +128,7 @@ def AQI_convert( c , air):
                 I = 500
                 break;
 
-            elif ( CO_MinAqiArray[i] <= c <= CO_MaxAqiArray[i] ):
+            elif ( CO_MinAqiArray[i] <= c < CO_MaxAqiArray[i] ):
                 c_low = CO_MinAqiArray[i];
                 c_high = CO_MaxAqiArray[i];
                 i_low = Aqi_MinAqiArray[i];
@@ -140,7 +140,7 @@ def AQI_convert( c , air):
                 I = 500
                 break;
 
-            elif ( SO2_MinAqiArray[i] <= c <= SO2_MaxAqiArray[i] ):
+            elif ( SO2_MinAqiArray[i] <= c < SO2_MaxAqiArray[i] ):
                 c_low = SO2_MinAqiArray[i];
                 c_high = SO2_MaxAqiArray[i];
                 i_low = Aqi_MinAqiArray[i];
@@ -152,7 +152,7 @@ def AQI_convert( c , air):
                 I = 500
                 break;
 
-            if ( NO2_MinAqiArray[i] <= c <= NO2_MaxAqiArray[i] ):
+            if ( NO2_MinAqiArray[i] <= c < NO2_MaxAqiArray[i] ):
                 c_low = NO2_MinAqiArray[i];
                 c_high = NO2_MaxAqiArray[i];
                 i_low = Aqi_MinAqiArray[i];
@@ -164,7 +164,7 @@ def AQI_convert( c , air):
                 I = 500
                 break;
 
-            if ( O3_8Min_AqiArray[i] <= c <= O3_8Max_AqiArray[i] ):
+            if ( O3_8Min_AqiArray[i] <= c < O3_8Max_AqiArray[i] ):
                 c_low = O3_8Min_AqiArray[i];
                 c_high = O3_8Max_AqiArray[i];
                 i_low = Aqi_MinAqiArray[i];
@@ -232,7 +232,6 @@ while True:
 
     SN1 = ((c2 - 286) - (get_alpha(temp_celsius, 'NO2')) * (c3 - 292)) * 3.876
     SN1 = SN1 if (SN1 >= 0) else -SN1
-    SN1 = int(SN1)
     AQI_SN1 = AQI_convert(SN1, 'NO2')
 
     # Alphasense SN2
@@ -258,7 +257,6 @@ while True:
 
     SN2 = ((c4 - 417) - (get_alpha(temp_celsius, 'O3')) * (c5 - 402)) * 2.5445
     SN2 = SN2 if (SN2 >= 0) else -SN2
-    SN2 = int(SN2)
     AQI_SN2 = AQI_convert(SN2, 'O3')
 
     # Alphasense SN3
@@ -284,7 +282,6 @@ while True:
 
     SN3 = (((c6 - 265) - (get_alpha(temp_celsius, 'CO')) * (c7 - 281)) * 3.4246)/1000
     SN3 = SN3 if (SN3 >= 0) else -SN3
-    SN3 = int(SN3)
     AQI_SN3 = AQI_convert(SN3, 'CO')
 
     # Alphasense SN4
@@ -310,7 +307,6 @@ while True:
 
     SN4 = ((c8 - 275) - (get_alpha(temp_celsius, 'SO2')) * (c9 - 295)) * 3.4722
     SN4 = SN4 if (SN4 >= 0) else -SN4
-    SN4 = int(SN4)
     AQI_SN4 = AQI_convert(SN4, 'SO2')
 
     # PM2.5
@@ -325,7 +321,6 @@ while True:
     c11 = (raw * scale) / 1000
     hppcf = (240.0 * pow(c11, 6) - 2491.3 * pow(c11, 5) + 9448.7 * pow(c11, 4) - 14840.0 * pow(c11, 3) + 10684.0 * pow(c11, 2) + 2211.8 * (c11) + 7.9623)
     PM25 = 0.518 + .00274 * hppcf
-    PM25 = int(PM25)
     AQI_PM25 = AQI_convert(PM25, 'PM25')
 
     print("C=", temp_celsius)
