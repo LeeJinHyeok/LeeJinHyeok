@@ -219,7 +219,7 @@ while True:
     raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c0 = raw * scale
-    temp_celsius = (c0 - 630) / 10 -8
+    temp_celsius = (c0 - 630) / 10 -56
     temp = (temp_celsius * 1.8) + 32
 
     # Alphasense SN1
@@ -293,7 +293,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c7 = raw * scale
 
-    SN3 = ((c6 - 265) - (get_alpha(temp, 'CO')) * (c7 - 281)) * 3.4246
+    SN3 = (((c6 - 265) - (get_alpha(temp, 'CO')) * (c7 - 281)) * 3.4246)/1000
     SN3 = SN3 if (SN3 >= 0) else -SN3
     AQI_SN3 = AQI_convert(SN3, 'CO')
 
