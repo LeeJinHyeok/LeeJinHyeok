@@ -338,10 +338,19 @@ while True:
 
     print(temp_celsius)
     print(temp)
+
+    print("SN1=",SN1)
     print(AQI_SN1)
-    print(SN2)
+
+    print("SN2=",SN2)
+
+    print("SN3=",SN3)
     print(AQI_SN3)
+
+    print("SN4=",SN4)
     print(AQI_SN4)
+
+    print("PM25=",PM25)
     print(AQI_PM25)
 
 
