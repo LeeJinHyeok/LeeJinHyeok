@@ -212,7 +212,6 @@ while True:
         temp_celsius = temp_celsius + 7
     elif 30 <= temp_celsius < 33:
         temp_celsius = temp_celsius - 4
-        temp_celsius = temp_celsius - 4
     elif 33 <= temp_celsius < 36:
         temp_celsius = temp_celsius - 7
     elif 36 <= temp_celsius < 40:
