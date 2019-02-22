@@ -330,8 +330,6 @@ while True:
     print("AQI_SN1=", AQI_SN1)
 
     print("SN2=",SN2)
-    print(c4)
-    print(c5)
     print("AQI_SN2=", AQI_SN2)
 
     print("SN3=",SN3)
@@ -342,7 +340,6 @@ while True:
 
     print("PM25=",PM25)
     print("AQI_PM25=", AQI_PM25)
-    print(epoch_time)
 
     sleep(2.5)
 
