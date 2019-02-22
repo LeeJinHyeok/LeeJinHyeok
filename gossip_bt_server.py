@@ -240,9 +240,18 @@ if __name__ == '__main__':
             scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
             c0 = raw * scale
             temp_celsius = (c0-600) / 10 -10
-            temp = (temp_celsius * 1.8) +32
-            temp = int (temp)
-
+            if 30<=temp_celsius<33:
+                temp_celsius = temp_celsius -2
+            elif 33<=temp_celsius <36:
+                temp_celsius = temp_celsius - 5
+            elif 36<=temp_celsius < 40:
+                temp_celsius= temp_celsius -10
+            elif 40<=temp_celsius<45:
+                temp_celsius=temp_celsius-14
+            elif temp_celsius>=45:
+                temp_celsius = temp_celsius-20
+            temp = (temp_celsius * 1.8) + 32
+            temp = int(temp)
 
 
 
