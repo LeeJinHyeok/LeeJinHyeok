@@ -208,9 +208,9 @@ while True:
     c0 = raw * scale
     temp_celsius = (c0 - 600) / 10 -10
     if 30 <= temp_celsius < 33:
-        temp_celsius = temp_celsius - 2
+        temp_celsius = temp_celsius - 4
     elif 33 <= temp_celsius < 36:
-        temp_celsius = temp_celsius - 5
+        temp_celsius = temp_celsius - 7
     elif 36 <= temp_celsius < 40:
         temp_celsius = temp_celsius - 10
     elif 40 <= temp_celsius < 45:
