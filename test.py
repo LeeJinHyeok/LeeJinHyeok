@@ -206,7 +206,7 @@ while True:
     raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c0 = raw * scale
-    temp_celsius = (c0 - 600) / 10 -10
+    temp_celsius = (c0 - 600) / 10 
     if 30 <= temp_celsius < 33:
         temp_celsius = temp_celsius - 4
     elif 33 <= temp_celsius < 36:
