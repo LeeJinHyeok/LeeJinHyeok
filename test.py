@@ -206,7 +206,7 @@ while True:
     raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c0 = raw * scale
-    temp_celsius = (c0 - 600) / 10 -6
+    temp_celsius = (c0 - 600) / 10 
     temp = (temp_celsius * 1.8) + 32
 
     # Alphasense SN1
