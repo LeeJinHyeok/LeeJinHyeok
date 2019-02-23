@@ -177,6 +177,18 @@ def AQI_convert( c , air):
 
     return I;
 
+SN1_Vpcbwe = 286
+SN2_Vpcbwe = 417
+SN3_Vpcbwe = 265
+SN4_Vpcbwe = 275
+SN1_Vpcbae = 292
+SN2_Vpcbae = 402
+SN3_Vpcbae = 281
+SN4_Vpcbae = 295
+SN1_sensitivity = 0.258
+SN2_sensitivity = 0.393
+SN3_sensitivity = 0.292
+SN4_sensitivity = 0.288
 
 # get_alpha example
 # get_alpha(50,'O3')
