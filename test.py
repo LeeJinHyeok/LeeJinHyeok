@@ -184,12 +184,14 @@ def AQI_convert( c , air):
 while True:
     epoch_time = datetime.datetime.now()  # epoch time
     neo = Gpio()
+
     S0 = 2  # pin to use
     S1 = 3
     S2 = 4
     S3 = 5
 
     pinNum = [S0, S1, S2, S3]
+
     num = [0, 0, 0, 0]
 
     # Blink example
@@ -231,7 +233,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c3 = raw * scale
 
-    SN1 = ((c2 - 286) - (get_alpha(temp_celsius, 'NO2')) * (c3 - 292)) * 3.876
+    SN1 = ((c2 - SN1_Vpcbwe) - (get_alpha(temp_celsius, 'NO2')) * (c3 - SN1_Vpcbae)) / SN1_sensitivity
     SN1 = SN1 if (SN1 >= 0) else -SN1
     AQI_SN1 = AQI_convert(SN1, 'NO2')
     AQI_SN1 = int(AQI_SN1)
@@ -257,7 +259,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c5 = raw * scale
 
-    SN2 = ((c4 - 417) - (get_alpha(temp_celsius, 'O3')) * (c5 - 402)) * 2.5445
+    SN2 = ((c4 - SN2_Vpcbwe) - (get_alpha(temp_celsius, 'O3')) * (c5 - SN2_Vpcbae)) / SN2_sensitivity
     SN2 = SN2 if (SN2 >= 0) else -SN2
     AQI_SN2 = AQI_convert(SN2, 'O3')
     AQI_SN2 = int(AQI_SN2)
@@ -283,7 +285,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c7 = raw * scale
 
-    SN3 = (((c6 - 265) - (get_alpha(temp_celsius, 'CO')) * (c7 - 281)) * 3.4246)/1000
+    SN3 = (((c6 - SN3_Vpcbwe) - (get_alpha(temp_celsius, 'CO')) * (c7 - SN3_Vpcbae)) / SN3_sensitivity) / 1000
     SN3 = SN3 if (SN3 >= 0) else -SN3
     AQI_SN3 = AQI_convert(SN3, 'CO')
     AQI_SN3 = int(AQI_SN3)
@@ -309,7 +311,7 @@ while True:
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c9 = raw * scale
 
-    SN4 = ((c8 - 275) - (get_alpha(temp_celsius, 'SO2')) * (c9 - 295)) * 3.4722
+    SN4 = ((c8 - SN4_Vpcbwe) - (get_alpha(temp_celsius, 'SO2')) * (c9 - SN4_Vpcbae)) / SN4_sensitivity
     SN4 = SN4 if (SN4 >= 0) else -SN4
     AQI_SN4 = AQI_convert(SN4, 'SO2')
     AQI_SN4 = int(AQI_SN4)
@@ -324,7 +326,9 @@ while True:
     raw = int(open("/sys/bus/iio/devices/iio:device0/in_voltage0_raw").read())
     scale = float(open("/sys/bus/iio/devices/iio:device0/in_voltage_scale").read())
     c11 = (raw * scale) / 1000
-    hppcf = (240.0 * pow(c11, 6) - 2491.3 * pow(c11, 5) + 9448.7 * pow(c11, 4) - 14840.0 * pow(c11, 3) + 10684.0 * pow(c11, 2) + 2211.8 * (c11) + 7.9623)
+
+    hppcf = (240.0 * pow(c11, 6) - 2491.3 * pow(c11, 5) + 9448.7 * pow(c11, 4) - 14840.0 * pow(c11, 3) + 10684.0 * pow(
+        c11, 2) + 2211.8 * (c11) + 7.9623)
     PM25 = 0.518 + .00274 * hppcf
     AQI_PM25 = AQI_convert(PM25, 'PM25')
     AQI_PM25 = int(AQI_PM25)
