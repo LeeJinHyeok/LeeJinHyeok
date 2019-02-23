@@ -345,6 +345,9 @@ while True:
     AQI_PM25 = AQI_convert(PM25, 'PM25')
     AQI_PM25 = int(AQI_PM25)
 
+    AQI_AVG = (AQI_SN1 + AQI_SN2 + AQI_SN3 + AQI_SN4 + AQI_PM25) / 5
+    AQI_AVG = int(AQI_AVG)
+
     print("C=", temp_celsius)
     print("F=", temp)
 
@@ -362,6 +365,8 @@ while True:
 
     print("PM25=",PM25)
     print("AQI_PM25=", AQI_PM25)
+
+    print("AQI_AVG=", AQI_AVG)
 
     sleep(2.5)
 
