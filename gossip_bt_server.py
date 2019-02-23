@@ -377,11 +377,12 @@ if __name__ == '__main__':
             AQI_PM25 = int(AQI_PM25)
 
             AQI_AVG = (AQI_SN1 + AQI_SN2 +AQI_SN3 + AQI_SN4 + AQI_PM25)/5
+            AQI_AVG = int(AQI_AVG)
 
 
             msg = ""
             if args.output_format == "csv":
-                msg = "realtime, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(epoch_time, temp, SN1, SN2, SN3, SN4, PM25, AQI_SN1, AQI_SN2, AQI_SN3, AQI_SN4, AQI_PM25)
+                msg = "realtime, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(epoch_time, temp, SN1, SN2, SN3, SN4, PM25, AQI_SN1, AQI_SN2, AQI_SN3, AQI_SN4, AQI_PM25, AQI_AVG)
             elif args.output_format == "json":
                 output = {'type': 'realtime',
                           'time': epoch_time,
