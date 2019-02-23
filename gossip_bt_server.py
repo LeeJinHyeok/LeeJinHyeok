@@ -20,35 +20,34 @@ CO_tempArray  = [ 1.40, 1.03, 0.85, 0.62, 0.30, 0.03,-0.25,-0.48,-0.80]
 #######################################################################
 
 def get_alpha(temper, air): #air = NO2,O3, CO, SO2
-    temper
     i=0 #index
     mulx=0 # multiple #times
     if(-30<=temper<-20):
-        i = 0;
+        i = 0
         mulx = temper + 30  # ex -28'C + 30 = 2 >> 2
     elif(-20<=temper<-10):
-        i = 1;
+        i = 1
         mulx = temper + 20
     elif (-10 <= temper < 0):
-        i = 2;
+        i = 2
         mulx = temper + 10
     elif (0 <= temper < 10):
-        i = 3;
+        i = 3
         mulx = temper
     elif (10 <= temper < 20):
-        i = 4;
+        i = 4
         mulx = temper -10
     elif (20 <= temper < 30):
-        i = 5;
+        i = 5
         mulx = temper -20
     elif (30 <= temper < 40):
-        i = 6;
+        i = 6
         mulx = temper -30
     elif (40 <= temper < 50):
-        i = 7;
+        i = 7
         mulx = temper - 40
     elif (50 <= temper):
-        i = 8; # if temperature exceed 50 just give 50'C data
+        i = 8 # if temperature exceed 50 just give 50'C data
 
     N =0.0
     if(air == 'O3'):
@@ -118,69 +117,69 @@ def AQI_convert( c , air):
         for i in range(0, 7):
             if(PM25_MaxAqiArray[6] < c):
                 I=500
-                break;
+                break
 
             elif ( PM25_MinAqiArray[i] <= c < PM25_MaxAqiArray[i] ):
-                c_low = PM25_MinAqiArray[i];
-                c_high = PM25_MaxAqiArray[i];
-                i_low = Aqi_MinAqiArray[i];
-                i_high = Aqi_MaxAqiArray[i];
-                break;
+                c_low = PM25_MinAqiArray[i]
+                c_high = PM25_MaxAqiArray[i]
+                i_low = Aqi_MinAqiArray[i]
+                i_high = Aqi_MaxAqiArray[i]
+                break
 
     elif (air == 'CO'):
         for i in range(0, 7):
             if (CO_MaxAqiArray[6] < c):
                 I = 500
-                break;
+                break
 
             elif ( CO_MinAqiArray[i] <= c < CO_MaxAqiArray[i] ):
-                c_low = CO_MinAqiArray[i];
-                c_high = CO_MaxAqiArray[i];
-                i_low = Aqi_MinAqiArray[i];
-                i_high = Aqi_MaxAqiArray[i];
-                break;
+                c_low = CO_MinAqiArray[i]
+                c_high = CO_MaxAqiArray[i]
+                i_low = Aqi_MinAqiArray[i]
+                i_high = Aqi_MaxAqiArray[i]
+                break
     elif (air == 'SO2'):
         for i in range(0, 7):
             if (SO2_MaxAqiArray[6] < c):
                 I = 500
-                break;
+                break
 
             elif ( SO2_MinAqiArray[i] <= c < SO2_MaxAqiArray[i] ):
-                c_low = SO2_MinAqiArray[i];
-                c_high = SO2_MaxAqiArray[i];
-                i_low = Aqi_MinAqiArray[i];
-                i_high = Aqi_MaxAqiArray[i];
-                break;
+                c_low = SO2_MinAqiArray[i]
+                c_high = SO2_MaxAqiArray[i]
+                i_low = Aqi_MinAqiArray[i]
+                i_high = Aqi_MaxAqiArray[i]
+                break
     elif (air == 'NO2'):
         for i in range(0, 7):
             if (NO2_MaxAqiArray[6] < c):
                 I = 500
-                break;
+                break
 
             if ( NO2_MinAqiArray[i] <= c < NO2_MaxAqiArray[i] ):
-                c_low = NO2_MinAqiArray[i];
-                c_high = NO2_MaxAqiArray[i];
-                i_low = Aqi_MinAqiArray[i];
-                i_high = Aqi_MaxAqiArray[i];
-                break;
+                c_low = NO2_MinAqiArray[i]
+                c_high = NO2_MaxAqiArray[i]
+                i_low = Aqi_MinAqiArray[i]
+                i_high = Aqi_MaxAqiArray[i]
+                break
     elif (air == 'O3'):
         for i in range(0, 5):
             if (O3_8Max_AqiArray[4] < c):
                 I = 500
-                break;
+                break
 
             if ( O3_8Min_AqiArray[i] <= c < O3_8Max_AqiArray[i] ):
-                c_low = O3_8Min_AqiArray[i];
-                c_high = O3_8Max_AqiArray[i];
-                i_low = Aqi_MinAqiArray[i];
-                i_high = Aqi_MaxAqiArray[i];
-                break;
+                c_low = O3_8Min_AqiArray[i]
+                c_high = O3_8Max_AqiArray[i]
+                i_low = Aqi_MinAqiArray[i]
+                i_high = Aqi_MaxAqiArray[i]
+                break
     ###################computing AQI formula####################
     if(I!=500):
         I = (((i_high - i_low) / (c_high - c_low)) * (c - c_low)) + i_low
     ############################################################
 
-    return I;
+    return I
 
 
 # get_alpha example
