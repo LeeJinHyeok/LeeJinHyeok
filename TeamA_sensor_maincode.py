@@ -222,10 +222,10 @@ if __name__ == '__main__':
             epoch_time = int(time())    # epoch time
             neo = Gpio()
 
-            S0 = 2  # pin to use
-            S1 = 3
-            S2 = 4
-            S3 = 5
+            S0 = 8  # pin to use
+            S1 = 9
+            S2 = 10
+            S3 = 11
 
             pinNum = [S0, S1, S2, S3]
 
